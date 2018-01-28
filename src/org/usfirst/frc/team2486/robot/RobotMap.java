@@ -1,26 +1,55 @@
 package org.usfirst.frc.team2486.robot;
 
+import org.usfirst.frc.team2486.robot.Enums.RobotIDs;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Solenoid;
 
 public class RobotMap
 {
-	public static Joystick DriverLeft;
-	public static Joystick DriverRight;
+	public static Joystick PrimaryLeft;
+	public static Joystick PrimaryRight;
 	
 	public static TalonSRX Left;
 	public static TalonSRX LeftSlave;
 	public static TalonSRX Right;
 	public static TalonSRX RightSlave;
 	
+	/**
+	 *  Motor for rotating the power cube intake.
+	 */
+	public static TalonSRX HeadActuator;
+	/**
+	 *  Primary intake motor for the power cubes.
+	 */
+	public static TalonSRX HeadIntake;
+	/**
+	 *  Slave intake motor for the power cubes.
+	 *  Direction is reversed from its master Talon.
+	 */
+	public static TalonSRX HeadIntakeSlave;
+	
+	public static Compressor AirCompressor;
+	/**
+	 *  Pneumatic shifters on the drivetrain.
+	 */
+	public static Solenoid Shifters;
+	/**
+	 *  Three-state piston to raise the arm.
+	 */
+	public static DoubleSolenoid Arm;
+	
 	public static void Initialize()
 	{
-		Left  = new TalonSRX(1);
-		Right = new TalonSRX(3);
-		LeftSlave  = new TalonSRX(2);
-		RightSlave = new TalonSRX(4);
+		Left  = new TalonSRX(RobotIDs.LEFT.getValue());
+		Right = new TalonSRX(RobotIDs.RIGHT.getValue());
+		LeftSlave  = new TalonSRX(RobotIDs.LEFTSLAVE.getValue());
+		RightSlave = new TalonSRX(RobotIDs.RIGHTSLAVE.getValue());
 
 		Left.setInverted(true);
 		LeftSlave.setInverted(true);
@@ -28,8 +57,21 @@ public class RobotMap
 		LeftSlave.set(ControlMode.Follower, Left.getDeviceID());
 		RightSlave.set(ControlMode.Follower, Right.getDeviceID());
 		
-		DriverLeft = new Joystick(0);
-		DriverRight = new Joystick(1);
+		HeadActuator    = new TalonSRX(RobotIDs.HEADACTUATOR.getValue());
+		HeadIntake      = new TalonSRX(RobotIDs.HEADINTAKE.getValue());
+		HeadIntakeSlave = new TalonSRX(RobotIDs.HEADINTAKESLAVE.getValue());
+		HeadIntakeSlave.set(ControlMode.Follower, HeadIntake.getDeviceID());
+		HeadIntakeSlave.setInverted(true);
+		
+		PrimaryLeft  = new Joystick(RobotIDs.PRIMARYLEFT.getValue());
+		PrimaryRight = new Joystick(RobotIDs.PRIMARYRIGHT.getValue());
+		
+		AirCompressor = new Compressor(RobotIDs.PCM.getValue());
+		Shifters      = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.SHIFTERS.getValue());
+		Arm           = new DoubleSolenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMPRIMARY.getValue(), RobotIDs.ARMSECONDARY.getValue());
+		
+		AirCompressor.setClosedLoopControl(true);
+
 	}
 	
 	private static boolean m_Initialized = false;
