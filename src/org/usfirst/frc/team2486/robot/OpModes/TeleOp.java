@@ -24,6 +24,7 @@ public class TeleOp implements OpMode
 	/**
 	 *  Place code inside here that is intended to loop continuously.
 	 */
+	
 	@Override
 	public void Loop()
 	{
@@ -48,5 +49,21 @@ public class TeleOp implements OpMode
 		}
 
 		//TODO: Power cube intake
+		boolean intake1 = RobotMap.PrimaryRight.getRawButton(ControlButton.HEADIN.getValue()) ||
+				RobotMap.PrimaryLeft.getRawButton(ControlButton.HEADIN.getValue());
+		
+		boolean output1 = RobotMap.PrimaryRight.getRawButton(ControlButton.HEADOUT.getValue()) || 
+				RobotMap.PrimaryLeft.getRawButton(ControlButton.HEADOUT.getValue());
+		
+		if (intake1 == true) {
+			RobotMap.HeadIntake.set(ControlMode.PercentOutput, 1);
+		} else {
+			//RobotMap.RightClaw.set(ControlMode.PercentOutput, 0);
+			if (output1 == true) {
+				RobotMap.HeadIntake.set(ControlMode.PercentOutput, -1);
+			} else {
+				RobotMap.HeadIntake.set(ControlMode.PercentOutput, 0.0);
+			}
+		}
 	}
 }

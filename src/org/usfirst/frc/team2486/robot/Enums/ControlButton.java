@@ -8,6 +8,8 @@ import java.util.Map;
  */
 public enum ControlButton {
 	SHIFTERS(1),
+	HEADIN(2),
+	HEADOUT(3),
 	;
 	
 	private final int value;
