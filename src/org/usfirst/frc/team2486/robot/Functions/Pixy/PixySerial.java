@@ -1,16 +1,16 @@
-package org.usfirst.frc.team2486.robot.Functions;
+package org.usfirst.frc.team2486.robot.Functions.Pixy;
 
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SerialPort.Port;
 
-public class Pixy
+public class PixySerial
 {
 	SerialPort pixy;
 	PixyPacket[] packets;
 	PixyException pExc;
 	String print;
 	
-	public Pixy()
+	public PixySerial()
 	{
 		pixy = new SerialPort(19200, Port.kUSB2);
 		pixy.setReadBufferSize(14);
@@ -82,19 +82,5 @@ public class Pixy
 		PixyPacket pkt = packets[Signature - 1];
 		packets[Signature - 1] = null;
 		return pkt;
-	}
-	
-	public class PixyPacket
-	{
-		public int X;
-		public int Y;
-		public int Width;
-		public int Height;
-	}
-	
-	public class PixyException extends Exception
-	{
-		private static final long serialVersionUID = 1L;
-		public PixyException(String message) { super(message); }
 	}
 }

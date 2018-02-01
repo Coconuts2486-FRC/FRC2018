@@ -4,16 +4,29 @@ import org.usfirst.frc.team2486.robot.Enums.RobotIDs;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class RobotMap
 {
+	/**
+	 * Left joystick of the primary driver.
+	 * Handles the drive train subsystem.
+	 */
 	public static Joystick PrimaryLeft;
+	/**
+	 * Right joystick of the primary driver.
+	 * Handles the drive train subsystem.
+	 */
 	public static Joystick PrimaryRight;
+	/**
+	 * Secondary operator's custom gamepad
+	 */
 	public static Joystick SecondaryOperator;
 	
 	public static TalonSRX Left;
@@ -48,6 +61,11 @@ public class RobotMap
 	 */
 	public static DoubleSolenoid Arm;
 	
+	/**
+	 * The most beautiful device in the world.
+	 */
+	public static AHRS NavX;
+	
 	public static void Initialize()
 	{
 		Left  = new TalonSRX(RobotIDs.LEFT.getValue());
@@ -76,6 +94,8 @@ public class RobotMap
 		Arm           = new DoubleSolenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMPRIMARY.getValue(), RobotIDs.ARMSECONDARY.getValue());
 		
 		AirCompressor.setClosedLoopControl(true);
+		
+		NavX = new AHRS(Port.kMXP);
 		
 		m_Initialized = true;
 	}

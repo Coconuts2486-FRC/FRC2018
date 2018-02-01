@@ -15,11 +15,11 @@ public class PlateAssignment
 	 * Must be called in auto or teleop.
 	 * @throws OpModeException 
 	 */
-	public PlateAssignment() throws OpModeException
+	public PlateAssignment()
 	{
 		if((DriverStation.getInstance().isAutonomous() || DriverStation.getInstance().isOperatorControl()) == false)
 		{
-			throw new OpModeException("OpMode is not autonomous or teleop. Data is futile.");
+			DriverStation.reportError("OpMode is not autonomous or teleop. Data is futile.", false);
 		}
 		_dsData = DriverStation.getInstance().getGameSpecificMessage();
 		if(_dsData == "")
@@ -29,7 +29,7 @@ public class PlateAssignment
 	}
 	
 	/**
-	 * Returns true if data was receieved either from the FMS or DS.
+	 * Returns true if data was received either from the FMS or DS.
 	 * @return Whether data was published.
 	 */
 	public boolean isData()
