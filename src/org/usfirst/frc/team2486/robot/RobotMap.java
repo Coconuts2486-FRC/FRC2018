@@ -14,6 +14,7 @@ public class RobotMap
 {
 	public static Joystick PrimaryLeft;
 	public static Joystick PrimaryRight;
+	public static Joystick SecondaryOperator;
 	
 	public static TalonSRX Left;
 	public static TalonSRX LeftSlave;
@@ -34,6 +35,9 @@ public class RobotMap
 	 */
 	public static TalonSRX HeadIntakeSlave;
 	
+	/**
+	 *  Onboard compressor to build air pressure.
+	 */
 	public static Compressor AirCompressor;
 	/**
 	 *  Pneumatic shifters on the drivetrain.
@@ -65,13 +69,15 @@ public class RobotMap
 		
 		PrimaryLeft  = new Joystick(RobotIDs.PRIMARYLEFT.getValue());
 		PrimaryRight = new Joystick(RobotIDs.PRIMARYRIGHT.getValue());
+		SecondaryOperator = new Joystick(RobotIDs.SECONDARYOPERATOR.getValue());
 		
 		AirCompressor = new Compressor(RobotIDs.PCM.getValue());
 		Shifters      = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.SHIFTERS.getValue());
 		Arm           = new DoubleSolenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMPRIMARY.getValue(), RobotIDs.ARMSECONDARY.getValue());
 		
 		AirCompressor.setClosedLoopControl(true);
-
+		
+		m_Initialized = true;
 	}
 	
 	private static boolean m_Initialized = false;

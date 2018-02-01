@@ -1,80 +1,78 @@
 package org.usfirst.frc.team2486.robot;
 
-import org.usfirst.frc.team2486.robot.Enums.ControlButton;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
+import org.usfirst.frc.team2486.robot.Interfaces.OpMode;
+import org.usfirst.frc.team2486.robot.OpModes.Autonomous;
+import org.usfirst.frc.team2486.robot.OpModes.Disabled;
+import org.usfirst.frc.team2486.robot.OpModes.TeleOp;
+import org.usfirst.frc.team2486.robot.OpModes.Test;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Robot extends IterativeRobot {
+public class Robot extends IterativeRobot
+{
+	OpMode currentMode = null;
 	
 	@Override
 	public void robotInit()
 	{
 		RobotMap.Initialize();
-		
+		currentMode = new Disabled();
+		Initialize();
 	}
 
 	@Override
 	public void autonomousInit()
 	{
-		
-	}
-	
-	@Override
-	public void autonomousPeriodic()
-	{
-		RobotMap.Left.set(ControlMode.PercentOutput, 0.5);
-		RobotMap.Right.set(ControlMode.PercentOutput, 0.5);
+		currentMode = new Autonomous();
+		Initialize();
 	}
 
-	boolean shifterHeld = false;
+	@Override
+	public void teleopInit()
+	{
+		currentMode = new TeleOp();
+		Initialize();
+	}
 	
 	@Override
 	public void teleopPeriodic()
 	{
-		// Drive train
-		RobotMap.Left.set(ControlMode.PercentOutput, -RobotMap.PrimaryLeft.getY());
-		RobotMap.Right.set(ControlMode.PercentOutput, -RobotMap.PrimaryRight.getY());
-		
-		// Shifters
-		boolean leftTrigger = RobotMap.PrimaryLeft.getRawButton(ControlButton.SHIFTERS.getValue());
-		boolean rightTrigger = RobotMap.PrimaryRight.getRawButton(ControlButton.SHIFTERS.getValue());
-		
-		if(shifterHeld == false)
-		{
-			if(leftTrigger || rightTrigger)
-			{
-				RobotMap.Shifters.set(!RobotMap.Shifters.get());
-			}
-		}
-		
-		if(leftTrigger || rightTrigger)
-		{
-			shifterHeld = true;
-		}
-		else
-		{
-			shifterHeld = false;
-		}
-		
-		// Power cube intake
-		
+		Loop();
 	}
 
 	@Override
+	public void testInit()
+	{
+		currentMode = new Test();
+		Initialize();
+	}
+	
+	@Override
 	public void testPeriodic()
 	{
-		
+		Loop();
+	}
+	
+	@Override
+	public void disabledInit()
+	{
+		currentMode = new Disabled();
+		Initialize();
 	}
 	
 	@Override
 	public void disabledPeriodic()
 	{
-		RobotMap.Left.set(ControlMode.PercentOutput, 0);
-		RobotMap.Right.set(ControlMode.PercentOutput, 0);
-		SmartDashboard.putBoolean("Compressor", RobotMap.AirCompressor.getPressureSwitchValue());
+		Loop();
+	}
+	
+	public void Initialize()
+	{
+		currentMode.Initialize();
+	}
+	
+	public void Loop()
+	{
+		currentMode.Loop();
 	}
 }

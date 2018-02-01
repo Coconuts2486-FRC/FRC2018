@@ -6,6 +6,7 @@ import java.util.Map;
 public enum RobotIDs {
 	PRIMARYLEFT(0),
 	PRIMARYRIGHT(1),
+	SECONDARYOPERATOR(2),
 	
 	LEFT(1),
 	RIGHT(3),

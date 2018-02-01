@@ -3,6 +3,9 @@ package org.usfirst.frc.team2486.robot.Enums;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Place the integer equivalent of the controller buttons here.
+ */
 public enum ControlButton {
 	SHIFTERS(1),
 	;
