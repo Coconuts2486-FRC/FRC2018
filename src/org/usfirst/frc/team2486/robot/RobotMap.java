@@ -57,6 +57,10 @@ public class RobotMap
 	 */
 	public static Solenoid Shifters;
 	/**
+	 *  Pneumatic shifters on the head.
+	 */
+	public static Solenoid HeadPiston;
+	/**
 	 *  Three-state piston to raise the arm.
 	 */
 	public static DoubleSolenoid Arm;
@@ -91,6 +95,7 @@ public class RobotMap
 		
 		AirCompressor = new Compressor(RobotIDs.PCM.getValue());
 		Shifters      = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.SHIFTERS.getValue());
+		HeadPiston  = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.HEADPISTON.getValue());
 		Arm           = new DoubleSolenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMPRIMARY.getValue(), RobotIDs.ARMSECONDARY.getValue());
 		
 		AirCompressor.setClosedLoopControl(true);
