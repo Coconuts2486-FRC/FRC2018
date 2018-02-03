@@ -18,14 +18,11 @@ public enum RobotIDs {
 	HEADINTAKESLAVE(12),
 	
 	PCM(21),
-	SHIFTERS(0),
+	SHIFTERS(1),
 	HEADPISTON(4),
 	ARMPRIMARY(3),
 	ARMSECONDARY(2),
 	ARMTERTIARY(0),
-	
-	
-	
 	;
 	
 	private final int value;
