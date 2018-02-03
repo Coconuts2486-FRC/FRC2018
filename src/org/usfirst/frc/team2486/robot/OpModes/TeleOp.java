@@ -67,22 +67,15 @@ public class TeleOp implements OpMode
 			}
 		}
 		
-		boolean pistonforward = RobotMap.PrimaryRight.getRawButtonPressed(ControlButton.ARMFORWARD.getValue()) || 
-				RobotMap.PrimaryLeft.getRawButton(ControlButton.ARMFORWARD.getValue());
-		
-		boolean pistonoff = RobotMap.PrimaryRight.getRawButtonPressed(ControlButton.ARMOFF.getValue()) || 
-				RobotMap.PrimaryLeft.getRawButton(ControlButton.ARMOFF.getValue());
-		
-		boolean pistonreverse = RobotMap.PrimaryRight.getRawButtonPressed(ControlButton.ARMREVERSE.getValue()) || 
-				RobotMap.PrimaryLeft.getRawButton(ControlButton.ARMREVERSE.getValue());
+		boolean pistonforward = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMFORWARD.getValue());
+		boolean pistonoff = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMOFF.getValue());
+		boolean pistonreverse = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMREVERSE.getValue());
 		
 		if (pistonforward == true) {
 			Arm.armHigh();
-		}
-		if (pistonoff == true) {
+		} else if (pistonoff == true) {
 			Arm.armMid();
-		}
-		if (pistonreverse == true) {
+		} else if (pistonreverse == true) {
 			Arm.armLow();
 		}
 		
