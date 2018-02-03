@@ -19,8 +19,9 @@ public enum RobotIDs {
 	
 	PCM(21),
 	SHIFTERS(0),
-	ARMPRIMARY(2),
-	ARMSECONDARY(3)
+	HEADPISTON(3),
+	ARMPRIMARY(1),
+	ARMSECONDARY(2)
 	;
 	
 	private final int value;
