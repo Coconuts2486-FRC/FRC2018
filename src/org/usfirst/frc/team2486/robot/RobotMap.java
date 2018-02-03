@@ -63,7 +63,10 @@ public class RobotMap
 	/**
 	 *  Three-state piston to raise the arm.
 	 */
-	public static DoubleSolenoid ArmPiston;
+	public static Solenoid ArmPistonPrimary;
+	public static Solenoid ArmPistonSecondary;
+	public static Solenoid ArmPistonTertiary;
+	
 	
 	/**
 	 * The most beautiful device in the world.
@@ -96,7 +99,11 @@ public class RobotMap
 		AirCompressor = new Compressor(RobotIDs.PCM.getValue());
 		Shifters      = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.SHIFTERS.getValue());
 		HeadPiston  = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.HEADPISTON.getValue());
-		ArmPiston           = new DoubleSolenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMPRIMARY.getValue(), RobotIDs.ARMSECONDARY.getValue());
+		//ArmPiston           = new DoubleSolenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMPRIMARY.getValue(), RobotIDs.ARMSECONDARY.getValue());
+		
+		ArmPistonPrimary = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMPRIMARY.getValue());
+		ArmPistonSecondary = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMSECONDARY.getValue());
+		ArmPistonTertiary = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMTERTIARY.getValue());
 		
 		AirCompressor.setClosedLoopControl(true);
 		
