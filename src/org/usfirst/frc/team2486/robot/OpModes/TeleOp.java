@@ -2,6 +2,7 @@ package org.usfirst.frc.team2486.robot.OpModes;
 
 import org.usfirst.frc.team2486.robot.RobotMap;
 import org.usfirst.frc.team2486.robot.Enums.ControlButton;
+import org.usfirst.frc.team2486.robot.Functions.Arm;
 import org.usfirst.frc.team2486.robot.Interfaces.OpMode;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -65,5 +66,25 @@ public class TeleOp implements OpMode
 				RobotMap.HeadIntake.set(ControlMode.PercentOutput, 0.0);
 			}
 		}
+		
+		boolean pistonforward = RobotMap.PrimaryRight.getRawButtonPressed(ControlButton.ARMFORWARD.getValue()) || 
+				RobotMap.PrimaryLeft.getRawButton(ControlButton.ARMFORWARD.getValue());
+		
+		boolean pistonoff = RobotMap.PrimaryRight.getRawButtonPressed(ControlButton.ARMOFF.getValue()) || 
+				RobotMap.PrimaryLeft.getRawButton(ControlButton.ARMOFF.getValue());
+		
+		boolean pistonreverse = RobotMap.PrimaryRight.getRawButtonPressed(ControlButton.ARMREVERSE.getValue()) || 
+				RobotMap.PrimaryLeft.getRawButton(ControlButton.ARMREVERSE.getValue());
+		
+		if (pistonforward == true) {
+			Arm.armHigh();
+		}
+		if (pistonoff == true) {
+			Arm.armMid();
+		}
+		if (pistonreverse == true) {
+			Arm.armLow();
+		}
+		
 	}
 }
