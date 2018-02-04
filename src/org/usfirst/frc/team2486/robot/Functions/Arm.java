@@ -8,8 +8,8 @@ public class Arm {
 	public static void armHigh()
 	{
 		RobotMap.ArmPistonPrimary.set(false);
-		RobotMap.ArmPistonSecondary.set(true);
-		RobotMap.ArmPistonTertiary.set(false);
+		RobotMap.ArmPistonSecondary.set(false);
+		RobotMap.ArmPistonTertiary.set(true);
 	}
 	public static void armMid()
 	{
