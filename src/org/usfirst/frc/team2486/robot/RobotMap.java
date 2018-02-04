@@ -75,8 +75,10 @@ public class RobotMap
 	 */
 	public static Solenoid ArmPistonTertiary;
 	
-	public static Encoder RightEncoder;
-	public static Encoder LeftEncoder;
+	public static TalonSRX Climber;
+	
+	//public static Encoder RightEncoder;
+	//public static Encoder LeftEncoder;
 	/**
 	 * The most beautiful device in the world.
 	 */
@@ -115,6 +117,8 @@ public class RobotMap
 		ArmPistonTertiary = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMTERTIARY.getValue());
 		
 		AirCompressor.setClosedLoopControl(true);
+		
+		Climber = new TalonSRX(RobotIDs.CLIMBER.getValue());
 		
 		NavX = new AHRS(Port.kMXP);
 		

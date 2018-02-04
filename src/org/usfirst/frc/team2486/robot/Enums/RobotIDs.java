@@ -12,6 +12,7 @@ public enum RobotIDs {
 	RIGHT(3),
 	LEFTSLAVE(2),
 	RIGHTSLAVE(4),
+	CLIMBER(13),
 	
 	HEADACTUATOR(13),
 	HEADINTAKE(11),

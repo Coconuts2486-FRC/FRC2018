@@ -13,6 +13,8 @@ public enum ControlButton {
 	ARMFORWARD(6),
 	ARMOFF(5),
 	ARMREVERSE(4),
+	CLIMB(7),
+	CLIMBOPPOSITE(3)
 	;
 	
 	private final int value;

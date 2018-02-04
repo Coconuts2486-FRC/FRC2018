@@ -79,5 +79,17 @@ public class TeleOp implements OpMode
 			Arm.armLow();
 		}
 		
+		boolean climb = RobotMap.SecondaryOperator.getRawButton(ControlButton.CLIMB.getValue());
+		boolean climbopposite = RobotMap.SecondaryOperator.getRawButton(ControlButton.CLIMBOPPOSITE.getValue());
+		
+		if (climb == true) {
+			RobotMap.Climber.set(ControlMode.PercentOutput, 1);
+		}
+		else if (climbopposite == true ) {
+			RobotMap.Climber.set(ControlMode.PercentOutput, -1);
+		} else {
+			RobotMap.Climber.set(ControlMode.PercentOutput, 0);
+		}
+		
 	}
 }
