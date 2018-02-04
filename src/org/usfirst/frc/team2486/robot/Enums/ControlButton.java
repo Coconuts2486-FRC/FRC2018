@@ -10,9 +10,9 @@ public enum ControlButton {
 	SHIFTERS(1),
 	HEADIN(2),
 	HEADOUT(3),
-	ARMFORWARD(4),
+	ARMFORWARD(6),
 	ARMOFF(5),
-	ARMREVERSE(6),
+	ARMREVERSE(4),
 	;
 	
 	private final int value;

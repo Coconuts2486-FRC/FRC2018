@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2486.robot;
 
+//hello
 import org.usfirst.frc.team2486.robot.Enums.RobotIDs;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -8,6 +9,7 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -64,10 +66,17 @@ public class RobotMap
 	 *  Three-state piston to raise the arm.
 	 */
 	public static Solenoid ArmPistonPrimary;
+	/**
+	 *  Second manifold for piston head.
+	 */
 	public static Solenoid ArmPistonSecondary;
+	/**
+	 *  Third manifold for piston head.
+	 */
 	public static Solenoid ArmPistonTertiary;
 	
-	
+	public static Encoder RightEncoder;
+	public static Encoder LeftEncoder;
 	/**
 	 * The most beautiful device in the world.
 	 */
