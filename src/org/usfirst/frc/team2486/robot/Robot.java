@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2486.robot;
 
-import org.usfirst.frc.team2486.robot.Interfaces.OpMode;
+import org.usfirst.frc.team2486.robot.Interfaces.IOpMode;
 import org.usfirst.frc.team2486.robot.OpModes.Autonomous;
 import org.usfirst.frc.team2486.robot.OpModes.Disabled;
 import org.usfirst.frc.team2486.robot.OpModes.TeleOp;
@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 
 public class Robot extends IterativeRobot
 {
-	OpMode currentMode = null;
+	IOpMode currentMode = null;
 	
 	@Override
 	public void robotInit()

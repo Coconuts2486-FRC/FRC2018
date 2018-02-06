@@ -2,11 +2,10 @@ package org.usfirst.frc.team2486.robot.Auto.Red;
 
 import org.usfirst.frc.team2486.robot.Interfaces.AutoMode;
 
-public class LeftScale implements AutoMode
+public class LeftScale extends AutoMode
 {
-	@Override
-	public void Run()
+	public LeftScale()
 	{
-		
+		super();
 	}
 }

@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2486.robot.Functions;
+package org.usfirst.frc.team2486.robot.Subsystems;
 
 import org.usfirst.frc.team2486.robot.RobotMap;
 

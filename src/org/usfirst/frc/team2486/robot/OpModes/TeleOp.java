@@ -2,15 +2,15 @@ package org.usfirst.frc.team2486.robot.OpModes;
 
 import org.usfirst.frc.team2486.robot.RobotMap;
 import org.usfirst.frc.team2486.robot.Enums.ControlButton;
-import org.usfirst.frc.team2486.robot.Functions.Arm;
-import org.usfirst.frc.team2486.robot.Interfaces.OpMode;
+import org.usfirst.frc.team2486.robot.Subsystems.Arm;
+import org.usfirst.frc.team2486.robot.Interfaces.IOpMode;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 /**
  * Routines for the driver-controlled period.
  */
-public class TeleOp implements OpMode
+public class TeleOp implements IOpMode
 {
 	/**
 	 *  Place code inside here that is intended to run once before TeleOp starts.

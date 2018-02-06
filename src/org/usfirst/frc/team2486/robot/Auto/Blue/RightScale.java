@@ -2,11 +2,10 @@ package org.usfirst.frc.team2486.robot.Auto.Blue;
 
 import org.usfirst.frc.team2486.robot.Interfaces.AutoMode;
 
-public class RightScale implements AutoMode
+public class RightScale extends AutoMode
 {
-	@Override
-	public void Run()
+	public RightScale()
 	{
-		
+		super();
 	}
 }

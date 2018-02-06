@@ -1,14 +1,11 @@
 package org.usfirst.frc.team2486.robot.Auto.Blue;
 
-import org.usfirst.frc.team2486.robot.Functions.PlateAssignment;
 import org.usfirst.frc.team2486.robot.Interfaces.AutoMode;
 
-public class LeftScale implements AutoMode
+public class LeftScale extends AutoMode
 {
-	PlateAssignment plates;
-	@Override
-	public void Run()
+	public LeftScale()
 	{
-		plates = new PlateAssignment();
+		super();
 	}
 }

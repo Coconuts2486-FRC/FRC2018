@@ -1,8 +1,8 @@
 package org.usfirst.frc.team2486.robot.OpModes;
 
-import org.usfirst.frc.team2486.robot.Interfaces.OpMode;
+import org.usfirst.frc.team2486.robot.Interfaces.IOpMode;
 
-public class Test implements OpMode {
+public class Test implements IOpMode {
 
 	@Override
 	public void Initialize() {
