@@ -6,7 +6,8 @@ import java.util.Map;
 /**
  * Place the integer equivalent of the controller buttons here.
  */
-public enum ControlButton {
+public enum ControlButton
+{
 	SHIFTERS(1),
 	HEADIN(2),
 	HEADOUT(3),

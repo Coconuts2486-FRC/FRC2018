@@ -2,8 +2,8 @@ package org.usfirst.frc.team2486.robot.OpModes;
 
 import org.usfirst.frc.team2486.robot.RobotMap;
 import org.usfirst.frc.team2486.robot.Enums.ControlButton;
-import org.usfirst.frc.team2486.robot.Subsystems.Arm;
 import org.usfirst.frc.team2486.robot.Interfaces.IOpMode;
+import org.usfirst.frc.team2486.robot.Subsystems.Arm;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
@@ -77,18 +77,6 @@ public class TeleOp implements IOpMode
 			Arm.armMid();
 		} else if (pistonreverse == true) {
 			Arm.armLow();
-		}
-		
-		boolean climb = RobotMap.SecondaryOperator.getRawButton(ControlButton.CLIMB.getValue());
-		boolean climbopposite = RobotMap.SecondaryOperator.getRawButton(ControlButton.CLIMBOPPOSITE.getValue());
-		
-		if (climb == true) {
-			RobotMap.Climber.set(ControlMode.PercentOutput, 1);
-		}
-		else if (climbopposite == true ) {
-			RobotMap.Climber.set(ControlMode.PercentOutput, -1);
-		} else {
-			RobotMap.Climber.set(ControlMode.PercentOutput, 0);
 		}
 		
 	}

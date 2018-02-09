@@ -1,10 +1,32 @@
 package org.usfirst.frc.team2486.robot.Subsystems;
 
 import org.usfirst.frc.team2486.robot.RobotMap;
+import org.usfirst.frc.team2486.robot.Enums.ArmStates;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-
-public class Arm {
+public class Arm
+{
+	public static void armPos(ArmStates state)
+	{
+		switch(state)
+		{
+			case LOW_FAST:
+				armLowFast();
+				break;
+			case LOW:
+				armLow();
+				break;
+			case MEDIUM:
+				armMid();
+				break;
+			case HIGH:
+				armHigh();
+				break;
+			default:
+				armLow();
+				break;
+		}
+	}
+	
 	public static void armHigh()
 	{
 		RobotMap.ArmPistonPrimary.set(false);
@@ -23,7 +45,7 @@ public class Arm {
 		RobotMap.ArmPistonSecondary.set(false);
 		RobotMap.ArmPistonTertiary.set(false);
 	}
-	public static void armlowfast()
+	public static void armLowFast()
 	{
 		RobotMap.ArmPistonPrimary.set(false);
 		RobotMap.ArmPistonSecondary.set(false);
