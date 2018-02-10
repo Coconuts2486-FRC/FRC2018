@@ -4,6 +4,8 @@ package org.usfirst.frc.team2486.robot;
 import org.usfirst.frc.team2486.robot.Enums.RobotIDs;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -97,6 +99,12 @@ public class RobotMap
 		LeftSlave.set(ControlMode.Follower, Left.getDeviceID());
 		RightSlave.set(ControlMode.Follower, Right.getDeviceID());
 		
+		Left.setStatusFramePeriod(StatusFrameEnhanced.Status_3_Quadrature, 1, 10);
+		Left.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		
+		Right.setStatusFramePeriod(StatusFrameEnhanced.Status_3_Quadrature, 1, 10);
+		Right.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
+		
 		HeadActuator    = new TalonSRX(RobotIDs.HEADACTUATOR.getValue());
 		HeadIntake      = new TalonSRX(RobotIDs.HEADINTAKE.getValue());
 		HeadIntakeSlave = new TalonSRX(RobotIDs.HEADINTAKESLAVE.getValue());
@@ -110,7 +118,6 @@ public class RobotMap
 		AirCompressor = new Compressor(RobotIDs.PCM.getValue());
 		Shifters      = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.SHIFTERS.getValue());
 		HeadPiston  = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.HEADPISTON.getValue());
-		//ArmPiston           = new DoubleSolenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMPRIMARY.getValue(), RobotIDs.ARMSECONDARY.getValue());
 		
 		ArmPistonPrimary = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMPRIMARY.getValue());
 		ArmPistonSecondary = new Solenoid(RobotIDs.PCM.getValue(), RobotIDs.ARMSECONDARY.getValue());
@@ -121,8 +128,6 @@ public class RobotMap
 		Climber = new TalonSRX(RobotIDs.CLIMBER.getValue());
 		
 		NavX = new AHRS(Port.kMXP);
-		
-		
 		
 		m_Initialized = true;
 	}
