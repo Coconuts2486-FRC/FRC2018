@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2486.robot;
 
+import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 //hello
 import org.usfirst.frc.team2486.robot.Enums.RobotIDs;
 
@@ -9,6 +11,10 @@ import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -132,6 +138,8 @@ public class RobotMap
 		NavX = new AHRS(Port.kMXP);
 		
 		PDP = new PowerDistributionPanel(0);
+		
+		CameraServer.getInstance().startAutomaticCapture();
 		
 		m_Initialized = true;
 	}
