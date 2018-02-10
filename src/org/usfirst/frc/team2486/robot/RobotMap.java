@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Solenoid;
 
 public class RobotMap
@@ -86,8 +87,9 @@ public class RobotMap
 	 */
 	public static AHRS NavX;
 	
-	public static void Initialize()
-	{
+	public static PowerDistributionPanel PDP;
+	
+	public static void Initialize() {
 		Left  = new TalonSRX(RobotIDs.LEFT.getValue());
 		Right = new TalonSRX(RobotIDs.RIGHT.getValue());
 		LeftSlave  = new TalonSRX(RobotIDs.LEFTSLAVE.getValue());
@@ -128,6 +130,8 @@ public class RobotMap
 		Climber = new TalonSRX(RobotIDs.CLIMBER.getValue());
 		
 		NavX = new AHRS(Port.kMXP);
+		
+		PDP = new PowerDistributionPanel(0);
 		
 		m_Initialized = true;
 	}

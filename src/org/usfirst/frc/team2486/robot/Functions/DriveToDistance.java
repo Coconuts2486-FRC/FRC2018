@@ -3,6 +3,7 @@ package org.usfirst.frc.team2486.robot.Functions;
 import org.usfirst.frc.team2486.robot.RobotMap;
 import org.usfirst.frc.team2486.robot.Interfaces.IAutoCommand;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 
 /**

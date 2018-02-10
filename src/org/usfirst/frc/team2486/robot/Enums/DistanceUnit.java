@@ -9,11 +9,11 @@ public enum DistanceUnit
 	 *  Centimeters.
 	 *  Conversion rate to rotations: 
 	 */
-	CENTIMETERS(),
-	METERS(),
+	CENTIMETERS(0),
+	METERS(0),
 	
-	INCHES(),
-	FEET(),
+	INCHES(0),
+	FEET(0),
 	
 	ROTATIONS(1)
 	;
