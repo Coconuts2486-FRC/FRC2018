@@ -1,8 +1,6 @@
 package org.usfirst.frc.team2486.robot.Functions;
 
 import org.usfirst.frc.team2486.robot.RobotMap;
-
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -33,8 +31,19 @@ public class PlotThread implements Runnable
 				/* grab the last signal update from our 1ms frame update */
 				SmartDashboard.putNumber("Left Velocity", RobotMap.Left.getSelectedSensorVelocity(0));
 				SmartDashboard.putNumber("Right Velocity", RobotMap.Right.getSelectedSensorVelocity(0));
+				SmartDashboard.putNumber("Left Rotations", RobotMap.Left.getSelectedSensorPosition(0));
+				SmartDashboard.putNumber("Right Rotations", RobotMap.Right.getSelectedSensorPosition(0));
 				SmartDashboard.putNumber("NavX Heading", RobotMap.NavX.getYaw());
-				SmartDashboard.putNumber("Battery Level", RobotMap.PDP.getVoltage());
+//				SmartDashboard.putNumber("Battery Level", RobotMap.PDP.getVoltage());
+				
+				byte controller = 0;
+				
+				controller += !RobotMap.SecondaryOperator.getRawButton(8)   ? 4 : 0;
+				controller += !RobotMap.SecondaryOperator.getRawButton(9)   ? 2 : 0;
+				controller += !RobotMap.SecondaryOperator.getRawButton(10)  ? 1 : 0;
+							
+				SmartDashboard.putString("Alliance Color", DriverStation.getInstance().getAlliance().toString());
+				SmartDashboard.putNumber("Mode", controller);
 			}
 		}
 		

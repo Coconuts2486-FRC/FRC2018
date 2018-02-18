@@ -37,6 +37,11 @@ public class PlateAssignment
 		return isData;
 	}
 	
+	public String getRaw()
+	{
+		return _dsData;
+	}
+	
 	/**
 	 *  Exception specific for autonomous issues.
 	 */

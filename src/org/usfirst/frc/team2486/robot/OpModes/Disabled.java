@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2486.robot.OpModes;
 
+import org.usfirst.frc.team2486.robot.RobotMap;
+import org.usfirst.frc.team2486.robot.Interfaces.IAuto;
 import org.usfirst.frc.team2486.robot.Interfaces.IOpMode;
 
 /**

@@ -9,13 +9,20 @@ import java.util.Map;
 public enum ControlButton
 {
 	SHIFTERS(1),
-	HEADIN(2),
-	HEADOUT(3),
+	
+	HEADIN(5),
+	HEADOUT(4),
+	HEADCLAMP(3),
+	HEADUNCLAMP(2),
+	
 	ARMFORWARD(6),
 	ARMOFF(5),
 	ARMREVERSE(4),
-	CLIMB(7),
-	CLIMBOPPOSITE(3)
+	
+	HEADACTUATORUP(3),
+	HEADACTUATORDOWN(7),
+	
+	CLIMB(13),
 	;
 	
 	private final int value;

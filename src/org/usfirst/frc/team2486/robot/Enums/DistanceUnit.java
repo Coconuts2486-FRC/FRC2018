@@ -12,16 +12,16 @@ public enum DistanceUnit
 	CENTIMETERS(0),
 	METERS(0),
 	
-	INCHES(0),
+	INCHES(226.14840989399293286219081272085),
 	FEET(0),
 	
-	ROTATIONS(1)
+	TICKS(1)
 	;
 	
-	private final int value;
+	private final double value;
 	private static Map<Object, Object> map = new HashMap<>();
 	
-	private DistanceUnit(int value)
+	private DistanceUnit(double value)
 	{
 		this.value = value;
 	}
@@ -39,7 +39,7 @@ public enum DistanceUnit
 		return (DistanceUnit) map.get(id);
 	}
 	
-	public int getValue()
+	public double getValue()
 	{
 		return value;
 	}
