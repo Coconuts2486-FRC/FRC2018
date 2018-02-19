@@ -85,7 +85,19 @@ public class RobotMap
 	 */
 	public static Solenoid ArmPistonTertiary;
 	
-	public static TalonSRX Climber;
+	//public static TalonSRX Climber;
+	
+	/**
+	 *  piston for claw
+	 */
+	
+	public static Solenoid ClawLift;
+	
+	/**
+	 *  piston to pinch
+	 */
+	
+	public static Solenoid ClawPincher;
 	
 	//public static Encoder RightEncoder;
 	//public static Encoder LeftEncoder;
@@ -134,7 +146,11 @@ public class RobotMap
 		
 		AirCompressor.setClosedLoopControl(true);
 		
-		Climber = new TalonSRX(RobotIDs.CLIMBER.getValue());
+		//Climber = new TalonSRX(RobotIDs.CLIMBER.getValue());
+		
+		ClawLift = new Solenoid(RobotIDs.CLAWLIFT.getValue());
+		
+		ClawPincher = new Solenoid(RobotIDs.CLAWLIFT.getValue());
 		
 		NavX = new AHRS(Port.kMXP);
 		

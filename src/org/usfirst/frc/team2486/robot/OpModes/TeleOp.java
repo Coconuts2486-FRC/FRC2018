@@ -22,6 +22,8 @@ public class TeleOp implements IOpMode
 	}
 
 	private boolean shifterHeld = false;
+	boolean ClawUpDown = false;
+	boolean ClawPinchYesNo = false;
 	/**
 	 *  Place code inside here that is intended to loop continuously.
 	 */
@@ -77,6 +79,24 @@ public class TeleOp implements IOpMode
 			Arm.armMid();
 		} else if (pistonreverse == true) {
 			Arm.armLow();
+		}
+		
+		if (RobotMap.SecondaryOperator.getRawButton(ControlButton.CLAWUPDOWN.getValue()) == true) {
+			ClawUpDown = !ClawUpDown;
+		}
+		if (ClawUpDown == true) {
+			RobotMap.ClawLift.set(true);
+		} else if (ClawUpDown == false) {
+			RobotMap.ClawLift.set(false);
+		}
+		
+		if (RobotMap.SecondaryOperator.getRawButton(ControlButton.CLAWPINCH.getValue()) == true) {
+			ClawPinchYesNo = !ClawPinchYesNo;
+		}
+		if (ClawPinchYesNo == true) {
+			RobotMap.ClawPincher.set(true);
+		} else if (ClawPinchYesNo == false) {
+			RobotMap.ClawPincher.set(false);
 		}
 		
 	}
