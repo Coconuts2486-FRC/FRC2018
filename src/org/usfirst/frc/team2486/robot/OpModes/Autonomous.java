@@ -48,10 +48,10 @@ public class Autonomous implements IOpMode {
 		
 		RobotMap.HeadPiston.set(true);
 		
-		IAuto mode = new Right();
+		IAuto mode = new RedLeftSwitch();
 		
-		if(RobotMap.CurrentAutoMode - 6 >= 0)
-			return;
+//		if(RobotMap.CurrentAutoMode - 6 >= 0)
+//			return;
 		
 //		switch(DriverStation.getInstance().getAlliance())
 //		{

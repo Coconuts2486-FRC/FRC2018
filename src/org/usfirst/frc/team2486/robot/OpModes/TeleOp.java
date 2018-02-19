@@ -82,7 +82,7 @@ public class TeleOp implements IOpMode
 		
 		if (intake1) {
 			// TAKES IN
-			RobotMap.HeadIntake.set(ControlMode.PercentOutput, 0.75);
+			RobotMap.HeadIntake.set(ControlMode.PercentOutput, 1);
 		} else {
 			//RobotMap.RightClaw.set(ControlMode.PercentOutput, 0);
 			if (output1) {
