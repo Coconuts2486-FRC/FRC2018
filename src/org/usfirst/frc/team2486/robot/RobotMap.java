@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2486.robot;
 
 import org.usfirst.frc.team2486.robot.Enums.PIDValues;
-//hello
+
 import org.usfirst.frc.team2486.robot.Enums.RobotIDs;
 import org.usfirst.frc.team2486.robot.Functions.PlotThread;
 import org.usfirst.frc.team2486.robot.Subsystems.TurnTo;
@@ -14,8 +14,6 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
@@ -90,6 +88,22 @@ public class RobotMap
 	 */
 	public static Solenoid ArmPistonTertiary;
 	
+	//public static TalonSRX Climber;
+	
+	/**
+	 *  piston for claw
+	 */
+	
+	public static Solenoid ClawLift;
+	
+	/**
+	 *  piston to pinch
+	 */
+	
+	public static Solenoid ClawPincher;
+	
+	//public static Encoder RightEncoder;
+	//public static Encoder LeftEncoder;
 	/**
 	 * The most beautiful device in the world.
 	 */
@@ -195,10 +209,18 @@ public class RobotMap
 		
 		AirCompressor.setClosedLoopControl(true);
 		
+		//Climber = new TalonSRX(RobotIDs.CLIMBER.getValue());
+		
+		ClawLift = new Solenoid(RobotIDs.CLAWLIFT.getValue());
+		
+		ClawPincher = new Solenoid(RobotIDs.CLAWLIFT.getValue());
+		
 		NavX = new AHRS(Port.kMXP);
 		NavX.resetDisplacement();
 		
 		//PDP = new PowerDistributionPanel(0);
+		
+		CameraServer.getInstance().startAutomaticCapture();
 		
 		m_Initialized = true;
 		

@@ -18,11 +18,10 @@ public enum ControlButton
 	ARMFORWARD(6),
 	ARMOFF(5),
 	ARMREVERSE(4),
-	
-	HEADACTUATORUP(3),
-	HEADACTUATORDOWN(7),
-	
 	CLIMB(13),
+	
+	CLAWPINCH(7),
+	CLAWUPDOWN(3)
 	;
 	
 	private final int value;

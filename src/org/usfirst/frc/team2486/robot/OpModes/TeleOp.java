@@ -26,8 +26,9 @@ public class TeleOp implements IOpMode
 
 	private boolean shifterHeld = false;
 	private boolean armHeld = false;
-	private boolean clamp = false;
-	
+
+	boolean ClawUpDown = false;
+	boolean ClawPinchYesNo = false;
 	/**
 	 *  Place code inside here that is intended to loop continuously.
 	 */
@@ -50,21 +51,6 @@ public class TeleOp implements IOpMode
 			shifterHeld = true;
 		else
 			shifterHeld = false;
-		
-		boolean clampOn = RobotMap.PrimaryLeft.getRawButton(ControlButton.HEADCLAMP.getValue()) || RobotMap.PrimaryRight.getRawButton(ControlButton.HEADCLAMP.getValue());
-		boolean clampOff = RobotMap.PrimaryLeft.getRawButton(ControlButton.HEADUNCLAMP.getValue()) || RobotMap.PrimaryRight.getRawButton(ControlButton.HEADUNCLAMP.getValue());
-
-		if (clamp == false)
-			SmartDashboard.putBoolean("clampOff", clampOff);
-			if (clampOn)
-				RobotMap.HeadPiston.set(true);
-			if(clampOff)
-				RobotMap.HeadPiston.set(false);
-
-		if (clampOn || clampOff)
-			clamp = true;
-		else
-			clamp = false;
 
 		//TODO: Power cube intake
 		boolean intake1 = RobotMap.PrimaryRight.getRawButton(ControlButton.HEADIN.getValue()) ||
@@ -83,30 +69,37 @@ public class TeleOp implements IOpMode
 			else
 				RobotMap.HeadIntake.set(ControlMode.PercentOutput, 0.0);
 		
-		if(RobotMap.SecondaryOperator.getRawButton(ControlButton.HEADACTUATORUP.getValue()))
-			// ARM UP
-			RobotMap.HeadActuator.set(ControlMode.PercentOutput, 1);
-		else if(RobotMap.SecondaryOperator.getRawButton(ControlButton.HEADACTUATORDOWN.getValue()))
-			// ARM DOWN
-			RobotMap.HeadActuator.set(ControlMode.PercentOutput, -1);
-		else
-			RobotMap.HeadActuator.set(ControlMode.PercentOutput, 0);
-		
 		boolean armForward = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMFORWARD.getValue());
 		boolean armOff     = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMOFF.getValue());
 		boolean armReverse = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMREVERSE.getValue());
 		
-		if (armHeld == false) 
+		if (armHeld == false)
+		{
 			if (armForward)
 				Arm.armHigh();
 			else if(armOff)
 				Arm.armMid();
 			else if(armReverse)
 				Arm.armLow();
+		}
 
 		if (armForward || armOff || armReverse)
 			armHeld = true;
 		else
 			armHeld = false;
+		
+		if (RobotMap.SecondaryOperator.getRawButton(ControlButton.CLAWUPDOWN.getValue()) == true)
+			ClawUpDown = !ClawUpDown;
+		if (ClawUpDown == true)
+			RobotMap.ClawLift.set(true);
+		else if (ClawUpDown == false)
+			RobotMap.ClawLift.set(false);
+		
+		if (RobotMap.SecondaryOperator.getRawButton(ControlButton.CLAWPINCH.getValue()) == true)
+			ClawPinchYesNo = !ClawPinchYesNo;
+		if (ClawPinchYesNo == true)
+			RobotMap.ClawPincher.set(true);
+		else if (ClawPinchYesNo == false)
+			RobotMap.ClawPincher.set(false);
 	}
 }

@@ -28,6 +28,9 @@ public enum RobotIDs {
 	ARMPRIMARY(5),
 	ARMSECONDARY(4),
 	ARMTERTIARY(0),
+	
+	CLAWLIFT(14),
+	CLAWPINCHER(15),
 	;
 	
 	private final int value;
