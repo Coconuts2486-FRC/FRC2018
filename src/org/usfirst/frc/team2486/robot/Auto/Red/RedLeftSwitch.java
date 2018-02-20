@@ -1,12 +1,10 @@
 package org.usfirst.frc.team2486.robot.Auto.Red;
 
-import org.usfirst.frc.team2486.robot.RobotMap;
 import org.usfirst.frc.team2486.robot.Enums.DistanceUnit;
 import org.usfirst.frc.team2486.robot.Enums.Nodes;
+import org.usfirst.frc.team2486.robot.Functions.CubeIntake;
 import org.usfirst.frc.team2486.robot.Functions.DriveToDistance;
 import org.usfirst.frc.team2486.robot.Interfaces.AutoMode;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class RedLeftSwitch extends AutoMode
 {
@@ -21,7 +19,7 @@ public class RedLeftSwitch extends AutoMode
 		if(Plates.getRaw().charAt(0) == 'L')
 		{
 			//Place block since we own the switch
-			//CommandList.add(new CubeIntake(true));
+			CommandList.add(new CubeIntake(true));
 		}
 	}
 }

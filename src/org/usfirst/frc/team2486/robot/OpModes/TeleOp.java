@@ -27,10 +27,10 @@ public class TeleOp implements IOpMode
 	private boolean shifterHeld = false;
 	private boolean armHeld = false;
 	private boolean clamp = false;
+	
 	/**
 	 *  Place code inside here that is intended to loop continuously.
 	 */
-	
 	@Override
 	public void Loop()
 	{
@@ -42,36 +42,29 @@ public class TeleOp implements IOpMode
 		boolean leftTrigger = RobotMap.PrimaryLeft.getRawButton(ControlButton.SHIFTERS.getValue());
 		boolean rightTrigger = RobotMap.PrimaryRight.getRawButton(ControlButton.SHIFTERS.getValue());
 
-		if (shifterHeld == false) {
-			if (leftTrigger || rightTrigger) {
+		if (shifterHeld == false)
+			if (leftTrigger || rightTrigger)
 				RobotMap.Shifters.set(!RobotMap.Shifters.get());
-			}
-		}
 
-		if (leftTrigger || rightTrigger) {
+		if (leftTrigger || rightTrigger)
 			shifterHeld = true;
-		} else {
+		else
 			shifterHeld = false;
-		}
 		
 		boolean clampOn = RobotMap.PrimaryLeft.getRawButton(ControlButton.HEADCLAMP.getValue()) || RobotMap.PrimaryRight.getRawButton(ControlButton.HEADCLAMP.getValue());
 		boolean clampOff = RobotMap.PrimaryLeft.getRawButton(ControlButton.HEADUNCLAMP.getValue()) || RobotMap.PrimaryRight.getRawButton(ControlButton.HEADUNCLAMP.getValue());
 
-		if (clamp == false) {
+		if (clamp == false)
 			SmartDashboard.putBoolean("clampOff", clampOff);
-			if (clampOn) {
+			if (clampOn)
 				RobotMap.HeadPiston.set(true);
-			}
-			if(clampOff) {
+			if(clampOff)
 				RobotMap.HeadPiston.set(false);
-			}
-		}
 
-		if (clampOn || clampOff) {
+		if (clampOn || clampOff)
 			clamp = true;
-		} else {
+		else
 			clamp = false;
-		}
 
 		//TODO: Power cube intake
 		boolean intake1 = RobotMap.PrimaryRight.getRawButton(ControlButton.HEADIN.getValue()) ||
@@ -80,74 +73,40 @@ public class TeleOp implements IOpMode
 		boolean output1 = RobotMap.PrimaryRight.getRawButton(ControlButton.HEADOUT.getValue()) || 
 				RobotMap.PrimaryLeft.getRawButton(ControlButton.HEADOUT.getValue());
 		
-		if (intake1) {
+		if (intake1)
 			// TAKES IN
 			RobotMap.HeadIntake.set(ControlMode.PercentOutput, 1);
-		} else {
-			//RobotMap.RightClaw.set(ControlMode.PercentOutput, 0);
-			if (output1) {
+		else
+			if (output1)
 				// SHOOTS OUT
 				RobotMap.HeadIntake.set(ControlMode.PercentOutput, -1);
-			} else {
+			else
 				RobotMap.HeadIntake.set(ControlMode.PercentOutput, 0.0);
-			}
-		}
 		
 		if(RobotMap.SecondaryOperator.getRawButton(ControlButton.HEADACTUATORUP.getValue()))
-		{
 			// ARM UP
 			RobotMap.HeadActuator.set(ControlMode.PercentOutput, 1);
-		}
 		else if(RobotMap.SecondaryOperator.getRawButton(ControlButton.HEADACTUATORDOWN.getValue()))
-		{
 			// ARM DOWN
 			RobotMap.HeadActuator.set(ControlMode.PercentOutput, -1);
-		}
 		else
-		{
 			RobotMap.HeadActuator.set(ControlMode.PercentOutput, 0);
-		}
-		
-		
-//		boolean pistonforward = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMFORWARD.getValue());
-//		boolean pistonoff = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMOFF.getValue());
-//		boolean pistonreverse = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMREVERSE.getValue());
-//		
-//		if (pistonforward == true) {
-//			Arm.armHigh();
-//		} else if (pistonoff == true) {
-//			Arm.armMid();
-//		} else if (pistonreverse == true) {
-//			Arm.armLow();
-//		}
-//		else
-//		{
-//			Arm.armLow();
-//		}
-		
 		
 		boolean armForward = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMFORWARD.getValue());
 		boolean armOff     = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMOFF.getValue());
 		boolean armReverse = RobotMap.SecondaryOperator.getRawButtonPressed(ControlButton.ARMREVERSE.getValue());
 		
-		if (armHeld == false) {
-			if (armForward) {
+		if (armHeld == false) 
+			if (armForward)
 				Arm.armHigh();
-			}
 			else if(armOff)
-			{
 				Arm.armMid();
-			}
 			else if(armReverse)
-			{
 				Arm.armLow();
-			}
-		}
 
-		if (armForward || armOff || armReverse) {
+		if (armForward || armOff || armReverse)
 			armHeld = true;
-		} else {
+		else
 			armHeld = false;
-		}
 	}
 }

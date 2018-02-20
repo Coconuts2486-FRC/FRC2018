@@ -25,10 +25,6 @@ public class Autonomous implements IOpMode {
 	@Override
 	public void Initialize()
 	{
-		/*
-		 * lets grab the 360 degree position of the MagEncoder's absolute
-		 * position, and intitally set the relative sensor to match.
-		 */
 		int absolutePositionLeft = RobotMap.Left.getSensorCollection().getPulseWidthPosition();
 		/* mask out overflows, keep bottom 12 bits */
 		absolutePositionLeft &= 0xFFF;

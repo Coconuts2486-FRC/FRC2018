@@ -19,9 +19,24 @@ public enum Nodes
 	RED_WALL_RIGHT_SCALE    (0, 0, 0, new Point(4.1629, 5.6861)),
 	RED_SWITCH_RIGHT_SCALE  (0, 0, 0, new Point(6.1533, 5.6861)),
 	RED_AISLE_RIGHT_SCALE   (0, 0, 0, new Point(7.1489, 5.6861)),
-	RED_SCALE_RIGHT_SCALE   (0, 0, 0, new Point(7.8388, 5.4929))
+	RED_SCALE_RIGHT_SCALE   (0, 0, 0, new Point(7.8388, 5.4929)),
 	
 	// Blue Nodes
+	BLUE_WALL_LEFT_SCALE     (0, 0, 0, new Point(12.6005, 5.685)),
+	BLUE_SWITCH_LEFT_SCALE   (0, 0, 0, new Point(10.6101, 5.685)),
+	BLUE_AISLE_LEFT_SCALE    (0, 0, 0, new Point(9.6145, 5.685)),
+	BLUE_SCALE_LEFT_SCALE    (0, 0, 0, new Point(7.8388, 2.6471)),
+
+	BLUE_WALL_LEFT_SWITCH    (0, 0, 0, new Point(4.1629, 3.2983)),
+	BLUE_SWITCH_LEFT_SWITCH  (0, 0, 0, new Point(5.5656, 3.2983)),
+	
+	BLUE_WALL_RIGHT_SWITCH   (0, 0, 0, new Point(4.1629, 4.8417)),
+	BLUE_SWITCH_RIGHT_SWITCH (0, 0, 0, new Point(5.2337, 4.8467)),
+	
+	BLUE_WALL_RIGHT_SCALE    (0, 0, 0, new Point(4.1629, 5.6861)),
+	BLUE_SWITCH_RIGHT_SCALE  (0, 0, 0, new Point(6.1533, 5.6861)),
+	BLUE_AISLE_RIGHT_SCALE   (0, 0, 0, new Point(7.1489, 5.6861)),
+	BLUE_SCALE_RIGHT_SCALE   (0, 0, 0, new Point(7.8388, 5.4929)),
     ;
 	
 	private int _xMap;
