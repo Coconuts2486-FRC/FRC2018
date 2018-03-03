@@ -16,6 +16,7 @@ public enum DistanceUnit
 	FEET(0),
 	
 	TICKS(1),
+	//COMPETITION BOT ROTATIONS(30600),
 	ROTATIONS(30600),
 	;
 	

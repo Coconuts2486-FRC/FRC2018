@@ -34,6 +34,6 @@ public class DriveTo
 		double leftError  = RobotMap.Left.getClosedLoopTarget(0)  - RobotMap.Left.getSelectedSensorPosition(0);
 		double rightError = RobotMap.Right.getClosedLoopTarget(0) - RobotMap.Right.getSelectedSensorPosition(0);
 		
-		return !((rightError > 150) && (leftError > 150));
+		return !((rightError > 50) && (leftError > 50));
 	}
 }
