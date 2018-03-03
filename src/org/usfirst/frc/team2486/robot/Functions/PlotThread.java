@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PlotThread implements Runnable
 {
 	private boolean verbose;
-	
+	public static byte controller = 0;
 	
 	public PlotThread(boolean verbose) {
 		this.verbose = verbose;
@@ -36,7 +36,7 @@ public class PlotThread implements Runnable
 				SmartDashboard.putNumber("NavX Heading", RobotMap.NavX.getYaw());
 //				SmartDashboard.putNumber("Battery Level", RobotMap.PDP.getVoltage());
 				
-				byte controller = 0;
+				//byte controller = 0;
 				
 				controller += !RobotMap.SecondaryOperator.getRawButton(8)   ? 4 : 0;
 				controller += !RobotMap.SecondaryOperator.getRawButton(9)   ? 2 : 0;

@@ -123,11 +123,11 @@ public class TeleOp implements IOpMode
 		
 		if(RobotMap.SecondaryOperator.getRawButton(ControlButton.CLIMB.getValue()))
 		{
-			RobotMap.Climber.set(ControlMode.PercentOutput, 0.3);
+			RobotMap.Climber.set(ControlMode.PercentOutput, 1);
 		}
 		else if(RobotMap.SecondaryOperator.getRawButton(ControlButton.CLIMB_REVERSE.getValue()))
 		{
-			RobotMap.Climber.set(ControlMode.PercentOutput, -0.3);
+			RobotMap.Climber.set(ControlMode.PercentOutput, -1);
 		}
 		else
 		{

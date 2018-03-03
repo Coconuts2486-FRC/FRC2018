@@ -1,5 +1,10 @@
 package org.usfirst.frc.team2486.robot.OpModes;
   
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.swing.DropMode;
+
 import org.usfirst.frc.team2486.robot.RobotMap;
 import org.usfirst.frc.team2486.robot.Auto.Blue.BlueLeftScale;
 import org.usfirst.frc.team2486.robot.Auto.Blue.BlueLeftSwitch;
@@ -14,11 +19,13 @@ import org.usfirst.frc.team2486.robot.Auto.Red.RedRightSwitch;
 import org.usfirst.frc.team2486.robot.Auto.Test.AutoDisabled;
 import org.usfirst.frc.team2486.robot.Auto.Test.RunToPos;
 import org.usfirst.frc.team2486.robot.Enums.AutoModes;
+import org.usfirst.frc.team2486.robot.Functions.PlotThread;
 import org.usfirst.frc.team2486.robot.Interfaces.AutoMode;
 import org.usfirst.frc.team2486.robot.Interfaces.IAuto;
 import org.usfirst.frc.team2486.robot.Interfaces.IOpMode;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Autonomous implements IOpMode {
@@ -49,51 +56,37 @@ public class Autonomous implements IOpMode {
 		
 		RobotMap.HeadClamp.set(true);
 		
-		IAuto mode = new RunToPos();
+		Alliance alliance = DriverStation.getInstance().getAlliance();
 		
-//		if(RobotMap.CurrentAutoMode - 6 >= 0)
-//			return;
+		IAuto mode = new AutoDisabled();
+		if(alliance == DriverStation.Alliance.Blue){
+		HashMap<Integer, IAuto> Bmodes = new HashMap<Integer, IAuto>();
+		Bmodes.put(4, new BlueLeftScale());
+		Bmodes.put(6,new BlueLeftSwitch());
+		Bmodes.put(5,new BlueRightScale());
+		Bmodes.put(7,new BlueRightSwitch());
 		
-//		switch(DriverStation.getInstance().getAlliance())
-//		{
-//			case Blue:
-//				switch(RobotMap.CurrentAutoMode)
-//				{
-//					case 1:
-//						mode = new BlueRightScale();
-//						break;
-//					case 3:
-//						mode = new BlueRightSwitch();
-//						break;
-//					case 5:
-//						mode = new BlueLeftScale();
-//						break;
-//					case 7:
-//						mode = new BlueLeftSwitch();
-//						break;
-//				}
-//				break;
-//			case Red:
-//				switch(RobotMap.CurrentAutoMode)
-//				{
-//					case 1:
-//						mode = new RedRightScale();
-//						break;
-//					case 3:
-//						mode = new RedRightSwitch();
-//						break;
-//					case 5:
-//						mode = new RedLeftScale();
-//						break;
-//					case 7:
-//						mode = new RedLeftSwitch();
-//						break;
-//				}
-//				break;
-//			default:
-//				break;
-//		}
+		Bmodes.put(0,new AutoDisabled());
+		Bmodes.put(2,new AutoDisabled());
+		Bmodes.put(1,new AutoDisabled());
+		Bmodes.put(3,new AutoDisabled());
 		
+		mode = Bmodes.get(PlotThread.controller);
+		}
+		if(alliance == DriverStation.Alliance.Red){
+			HashMap<Integer, IAuto> Rmodes = new HashMap<Integer, IAuto>();
+			Rmodes.put(4, new RedLeftScale());
+			Rmodes.put(6,new RedLeftSwitch());
+			Rmodes.put(5,new RedRightScale());
+			Rmodes.put(7,new RedRightSwitch());
+			
+			Rmodes.put(0,new AutoDisabled());
+			Rmodes.put(2,new AutoDisabled());
+			Rmodes.put(1,new AutoDisabled());
+			Rmodes.put(3,new AutoDisabled());
+			
+			mode = Rmodes.get(PlotThread.controller);
+			}
 		mode.Run();
 	}
 
